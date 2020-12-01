@@ -45,8 +45,7 @@ client.manager = new Manager({
       .setDescription(
         `:musical_note: ${
           track.title
-        } :musical_note:\n\nSong Length: **${formatTime(
-          track.duration,
+        },
           true
         )}**`
       )
