@@ -73,7 +73,9 @@ language: "shortEn",
     const mbd = new MessageEmbed() 
     .setColor("RED")
     .setTitle("Good Bye... im leaving the channel.")
-    .setDescription(`Thanks for using **${client.user.username}**`) 
+    .setDescription(`Thanks for using **${client.user.username}**`)
+    .setFooter(`${client.user.username} ~ Gang Sebelah © 2020`)
+    .setTimeStamp()
     const channel = client.channels.cache.get(player.textChannel);
     channel.send({embed: mbd});
     player.destroy();
