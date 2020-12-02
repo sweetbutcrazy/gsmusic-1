@@ -92,26 +92,10 @@ module.exports = {
         const mbd = new MessageEmbed() 
         .setColor("RED")
         .setDescription(results) 
-        .setFooter(`<a:60sec:783543097790824479> ${client.user.username} ~ Gang Sebelah © 2020`)
+        .setFooter("<a:60sec:783543097790824479>", `${client.user.username} ~ Gang Sebelah © 2020`)
         message.channel.send({ embed: mbd });
-        const collector = message.channel.createMessageCollector(m => {
-            return m.author.id === message.author.id && new RegExp('^([1-5|cancel])$', "i").test(m.content);
-         }, { time: 60000, max: 1 });
-          collector.on("collect", m => {
-          if(/cancel/i.test(m.content)) return collector.stop("cancelled");
-
-           const track = tracks[Number(m.content) - 1];
-           player.queue.add(track);
-           if(getPlayer.queue[0]) message.channel.send(`Enqueuing track **${track.title}**.`);
-           if (!player.playing) player.play();
-           message.channel.messages.fetch({ limit: 2 }).then(messages => {
-           message.channel.bulkDelete(messages)
-           });
-         });
-           collector.on("end", (_, reason) => {
-            if(["time", "cancelled"].includes(reason)) return message.channel.send("Cancelled selection");
-      });
-        /*try {
+      
+        try {
           collected = await message.channel.awaitMessages(filter, {
             max: 1,
             time: 60000,
@@ -145,7 +129,7 @@ module.exports = {
         if (!player.playing && !player.paused && !player.queue.size)
           player.play();
         return message.reply(`enqueuing \`${track.title}\`.`);
-*/
+
     }
   }
 };
