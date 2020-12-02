@@ -72,7 +72,7 @@ language: "shortEn",
   .on("queueEnd", player => {
     const mbd = new MessageEmbed() 
     .setColor("RED")
-    .setTitle("Good Bye... im leaving the channel.")
+    .setTitle(`<a:sry:783618394782957599>`, "Good Bye... im leaving the channel.")
     .setDescription(`Thanks for using **${client.user.username}**`)
     .setFooter(`${client.user.username} ~ Gang Sebelah © 2020`)
     .setTimeStamp()
