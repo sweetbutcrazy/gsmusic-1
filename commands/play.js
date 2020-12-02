@@ -26,11 +26,12 @@ module.exports = {
         }
       });
 
-    const player = message.client.manager.create({
+    const player = client.manager.create({
       guild: message.guild.id,
       voiceChannel: channel.id,
       textChannel: message.channel.id, 
-      volume: 50
+      volume: 50, 
+      selfDeafen: true
     });
 
     if (player.state !== "CONNECTED") player.connect();
