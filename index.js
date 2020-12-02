@@ -83,7 +83,7 @@ language: "shortEn",
     const channel = client.channels.cache.get(player.textChannel);
     channel.send({embed: mbd});
     player.destroy();
-  });
+  })
   .on("trackEnd", player => {
    const autoplay = player.get("autoplay")
     if (autoplay === true) {
@@ -95,7 +95,7 @@ language: "shortEn",
           player.queue.add(res.tracks[1]);
     }
 	
-});
+})
     .on("trackStuck", player => {
     const channel = client.channels.cache.get(player.textChannel);
     const thing = new MessageEmbed()
@@ -105,7 +105,7 @@ language: "shortEn",
     client.logger.log(`Error when loading song! Track is stuck in [${player.guild}]`, "error");
     if (!player.voiceChannel) player.destroy();
 
-});
+})
 
     .on("trackError", player => {
      const channel = client.channels.cache.get(player.textChannel);
@@ -116,7 +116,7 @@ language: "shortEn",
     client.logger.log(`Error when loading song! Track is error in [${player.guild}]`, "error");
     if (!player.voiceChannel) player.destroy();
 
-}
+}) 
 /*
 * Error & Client Event
 */
