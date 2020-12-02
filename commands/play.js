@@ -70,7 +70,7 @@ module.exports = {
             .setFooter(
               `Request by: ${message.author.tag}`,
               message.author.displayAvatarURL()
-            );
+           )
           .setTimeStamp()
           return message.channel.send({embed: mbd});
         }
@@ -92,7 +92,7 @@ module.exports = {
           .setFooter(
             `Request by: ${message.author.tag}`,
             message.author.displayAvatarURL()
-          );
+          )
         .setTimeStamp()
         return message.channel.send({embed: mbd});
       case "SEARCH_RESULT":
@@ -111,7 +111,7 @@ module.exports = {
             .setFooter(
               `Request by: ${message.author.tag}`,
               message.author.displayAvatarURL()
-            );
+            )
            .setTimeStamp()
           return message.channel.send(thing);
         }
