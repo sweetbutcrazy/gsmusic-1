@@ -88,13 +88,20 @@ module.exports = {
         if (!player.playing && !player.paused && !player.queue.size) {
           return player.play();
         } else {
-          const mbd = new MessageEmbed()
-            .setColor("#D70FB6")
-            .setDescription(`**Songs added to queue **\n[${track.title}](${track.uri}) - \`[${client.dura}]\``)
-            .setThumbnail(track.displayThumbnail("hqdefault")) 
-            .setTimeStamp()
-            .setFooter(`Request by: ${message.author.tag}`, message.author.displayAvatarURL())
-          return message.channel.send({embed: mbd});
+          
+          return message.channel.send({embed: { 
+                 color: "##D70FB6", 
+           description: `**Songs added to queue **\n[${track.title}](${track.uri}) - \`[${client.dura}]\``, 
+           thumbnail: {
+		url: `${track.displayThumbnail("hqdefault")}`,
+	},
+          timestamp: new Date(),
+	footer: {
+		text: `Request by: ${message.author.tag}`
+		icon_url: `${message.author.displayAvatarURL()}`,
+	},
+         
+         });
         }
     }
   }
