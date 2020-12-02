@@ -44,9 +44,7 @@ module.exports = {
         throw res.exception;
       }
     } catch (err) {
-      return message.reply(
-        `there was an error while searching: ${err.message}`
-      );
+      return message.reply(`there was an error while searching: ${err.message}`);
     }
 
     switch (res.loadType) {
@@ -60,18 +58,12 @@ module.exports = {
         if (!player.playing && !player.paused && !player.queue.size) {
           return player.play();
         } else {
-          var mbd = new MessageEmbed()
+          const mbd = new MessageEmbed()
             .setColor("#D70FB6")
-            
-            .setThumbnail(track.displayThumbnail("hqdefault"))
-            .setDescription(
-              `**Song added to queue **\n[${track.title}](${track.uri}) - \`[${client.dura}]\``
-            )
-            .setFooter(
-              `Request by: ${message.author.tag}`,
-              message.author.displayAvatarURL()
-           )
-          .setTimeStamp()
+            .setDescription(`**Song added to queue **\n[${track.title}](${track.uri}) - \`[${client.dura}]\``)
+            .setThumbnail(track.displayThumbnail("hqdefault")) 
+            .setTimeStamp()
+            .setFooter(`Request by: ${message.author.tag}`, message.author.displayAvatarURL())
           return message.channel.send({embed: mbd});
         }
       case "PLAYLIST_LOADED":
@@ -82,18 +74,13 @@ module.exports = {
           player.queue.totalSize === res.tracks.length
         )
           player.play();
-        var mbd = new MessageEmbed()
-          .setColor("#D70FB6")
+        const mbd = new MessageEmbed()
+          .setColor("#D70FB6")        
+          .setDescription(`**Playlist added to queue **\n${res.tracks.length} Songs **${res.playlist.name}** - \`[${client.dura}]\``)
           .setThumbnail(res.tracks[0].displayThumbnail("hqdefault"))
-          .setDescription(
-            ` **Playlist added to queue **\n${res.tracks.length} Songs **${res.playlist.name}** - \`[${client.dura}]\``
-          )
-          
-          .setFooter(
-            `Request by: ${message.author.tag}`,
-            message.author.displayAvatarURL()
-          )
-        .setTimeStamp()
+          .setTimeStamp()
+          .setFooter(`Request by: ${message.author.tag}`, message.author.displayAvatarURL())
+        
         return message.channel.send({embed: mbd});
       case "SEARCH_RESULT":
         var track = res.tracks[0];
@@ -101,18 +88,12 @@ module.exports = {
         if (!player.playing && !player.paused && !player.queue.size) {
           return player.play();
         } else {
-          var mbd = new MessageEmbed()
+          const mbd = new MessageEmbed()
             .setColor("#D70FB6")
-            
-            .setThumbnail(track.displayThumbnail("hqdefault"))
-            .setDescription(
-              ` **Songs added to queue **\n[${track.title}](${track.uri}) - \`[${client.dura}]\``
-            )
-            .setFooter(
-              `Request by: ${message.author.tag}`,
-              message.author.displayAvatarURL()
-            )
-           .setTimeStamp()
+            .setDescription(`**Songs added to queue **\n[${track.title}](${track.uri}) - \`[${client.dura}]\``)
+            .setThumbnail(track.displayThumbnail("hqdefault")) 
+            .setTimeStamp()
+            .setFooter(`Request by: ${message.author.tag}`, message.author.displayAvatarURL())
           return message.channel.send({embed: mbd});
         }
     }
