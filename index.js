@@ -58,6 +58,7 @@ language: "shortEn",
       ms: () => "MS",
     },
   },
+})
   const start = new MessageEmbed()
         .setDescription(`🎶 **Started Playing**\n [${track.title}](${track.uri}) - \n\`[${dura}]\``)
         .setThumbnail(track.displayThumbnail("hqdefault"))
@@ -71,9 +72,8 @@ language: "shortEn",
   .on("queueEnd", player => {
     const mbd = new MessageEmbed() 
     .setColor("RED")
-    .setTitle("Good Bye.")
-    .setDescription(`Thanks for using **${client.users.username}**`
-    .addImage("https://cdn.discordapp.com/attachments/773766203914321980/782599730215518228/banner_server_15.png", true) 
+    .setTitle("Good Bye... im leaving the channel.")
+    .setDescription(`Thanks for using **${client.users.username}**`) 
     const channel = client.channels.cache.get(player.textChannel);
     channel.send({embed: mbd} 
     player.destroy();
