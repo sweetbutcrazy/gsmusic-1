@@ -1,3 +1,5 @@
+const { MessageEmbed } = require("discord.js");
+
 module.exports = {
   name: "play",
   aliases: ["p"],
@@ -87,13 +89,16 @@ module.exports = {
           .slice(0, max)
           .map((track, index) => `${++index} - \`${track.title}\``)
           .join("\n");
-
+        const mbd = new MessageEmbed() 
+        .setColor("RED")
+        .setDescription(results) 
+        .setFooter(`<a:60sec:783543097790824479> ${client.user.username} ~ Gang Sebelah © 2020`)
         message.channel.send({ embed: { description: results } });
 
         try {
           collected = await message.channel.awaitMessages(filter, {
             max: 1,
-            time: 30e3,
+            time: 60000,
             errors: ["time"]
           });
         } catch (e) {
@@ -116,7 +121,7 @@ module.exports = {
         if (index < 0 || index > max - 1)
           return message.reply(
             `the number you provided too small or too big (1-${max}).`
-          );
+          ).then(m => m.delete({ timeout: 5000 }));
 
         const track = res.tracks[index];
         player.queue.add(track);
