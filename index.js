@@ -23,7 +23,7 @@ client.manager = new Manager({
     {
       host: "localhost",
       port: 2333,
-      password: "youshallnotpass",
+      password: "password",
       retryDelay: 5000
     }
   ],
@@ -69,8 +69,13 @@ language: "shortEn",
     channel.send({embed: start})
   })
   .on("queueEnd", player => {
+    const mbd = new MessageEmbed() 
+    .setColor("RED")
+    .setTitle("Good Bye.")
+    .setDescription(`Thanks for using **${client.users.username}**`
+    .addImage("https://cdn.discordapp.com/attachments/773766203914321980/782599730215518228/banner_server_15.png", true) 
     const channel = client.channels.cache.get(player.textChannel);
-    channel.send("Queue has ended.");
+    channel.send({embed: mbd} 
     player.destroy();
   });
 
