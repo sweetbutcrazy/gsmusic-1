@@ -1,5 +1,7 @@
 {
-  "token": "NjAyOTMwMjc5Mzc1NTY4OTM2.XTYAlA.DWbAHDrB3DtGKHROrvKFksdidBg",
+  "token": "",
   "owner": "573319705062932500",
-  "prefix": "n."
+  "prefix": "n.",
+  "clientID": "babbdd720a52486f9357ece25004d62a",
+  "clientSecret": "2e018fc6ebaa4e39a47ef0a41e84f85a" 
 } 
