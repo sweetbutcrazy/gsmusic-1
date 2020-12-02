@@ -93,7 +93,7 @@ module.exports = {
         .setColor("RED")
         .setDescription(results) 
         .setFooter(`<a:60sec:783543097790824479> ${client.user.username} ~ Gang Sebelah © 2020`)
-        message.channel.send({ embed: { description: results } });
+        message.channel.send({ embed: mbd });
 
         try {
           collected = await message.channel.awaitMessages(filter, {
