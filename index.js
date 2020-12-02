@@ -44,8 +44,22 @@ client.manager = new Manager({
     `Node "${node.options.identifier}" encountered an error: ${error.message}.`
   ))
   .on("trackStart", (player, track) => {
+  const dura = durasi(track.duration, { 
+language: "shortEn",
+  languages: {
+    shortEn: {
+      y: () => "Y",
+      mo: () => "MO",
+      w: () => "W",
+      d: () => "D",
+      h: () => "H",
+      m: () => "M",
+      s: () => "S",
+      ms: () => "MS",
+    },
+  },
   const start = new MessageEmbed()
-        .setDescription(`🎶 **Started Playing**\n [${track.title}](${track.uri}) - \n\`[${durasi(track.duration, {largest: 2 })}]\``)
+        .setDescription(`🎶 **Started Playing**\n [${track.title}](${track.uri}) - \n\`[${dura}]\``)
         .setThumbnail(track.displayThumbnail("hqdefault"))
         .setColor("BLACK")
         .setTimestamp()
