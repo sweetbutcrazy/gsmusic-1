@@ -45,7 +45,7 @@ client.manager = new Manager({
   ))
   .on("trackStart", (player, track) => {
   const start = new MessageEmbed()
-        .setDescription(`🎶 **Started Playing**\n [${track.title}](${track.uri}) - \`[${durasi(track.duration, {largest: 2 })}]\``)
+        .setDescription(`🎶 **Started Playing**\n [${track.title}](${track.uri}) - \n\`[${durasi(track.duration, {largest: 2 })}]\``)
         .setThumbnail(track.displayThumbnail("hqdefault"))
         .setColor("BLACK")
         .setTimestamp()
