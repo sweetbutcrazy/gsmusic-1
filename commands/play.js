@@ -71,9 +71,9 @@ module.exports = {
                 if (!player.playing && !player.paused && player.queue.totalSize === res.tracks.length) player.play();
                 var thing = new MessageEmbed()
                     .setColor("#D70FB6")
-                    .setTimestamp()
                     .setThumbnail(res.tracks[0].displayThumbnail("hqdefault"))
                     .setDescription(`${emojiplaylist} **Playlist added to queue **\n${res.tracks.length} Songs **${res.playlist.name}** - \`[${durasi}]\``)
+                    .setTimeStamp()
                     .setFooter(`Request by: ${message.author.tag}`, message.author.displayAvatarURL());
                 return message.channel.send(thing);
             case 'SEARCH_RESULT':
