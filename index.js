@@ -63,7 +63,7 @@ client.dura = dura;
   const start = new MessageEmbed()
         .setDescription(`🎶 **Started Playing**\n [${track.title}](${track.uri}) - \n\`[${dura}]\``)
         .setThumbnail(track.displayThumbnail("hqdefault"))
-        .setColor("BLACK")
+        .setColor("#D70FB6")
         .setTimestamp()
         .setFooter(`Request by: ${track.requester.tag}`, track.requester.displayAvatarURL());
     
