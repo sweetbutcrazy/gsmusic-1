@@ -39,6 +39,9 @@ client.manager = new Manager({
     })
   ]
 })
+/*
+* Lavalink Event
+*/
   .on("nodeConnect", node => console.log(`Node "${node.options.identifier}" connected.`))
   .on("nodeError", (node, error) => console.log(
     `Node "${node.options.identifier}" encountered an error: ${error.message}.`
@@ -81,7 +84,42 @@ language: "shortEn",
     channel.send({embed: mbd});
     player.destroy();
   });
+  .on("trackEnd", player => {
+   const autoplay = player.get("autoplay")
+    if (autoplay === true) {
+        const requester = player.get("requester");
+        const oldidentifier = player.get("identifier");
+        const identifier = player.queue.current.identifier;
+        const search = `https://www.youtube.com/watch?v=${identifier}&list=RD${oldidentifier}`;
+        res = await player.search(search, requester);
+          player.queue.add(res.tracks[1]);
+    }
+	
+});
+    .on("trackStuck", player => {
+    const channel = client.channels.cache.get(player.textChannel);
+    const thing = new MessageEmbed()
+        .setColor("RED")
+        .setDescription("❌ Error when loading song! Track is stuck");
+    channel.send({embed: mbd});
+    client.logger.log(`Error when loading song! Track is stuck in [${player.guild}]`, "error");
+    if (!player.voiceChannel) player.destroy();
 
+});
+
+    .on("trackError", player => {
+     const channel = client.channels.cache.get(player.textChannel);
+    const mbd = new MessageEmbed()
+        .setColor("RED")
+        .setDescription("❌ Error when loading song! Track is error");
+    channel.send({embed: mbd});
+    client.logger.log(`Error when loading song! Track is error in [${player.guild}]`, "error");
+    if (!player.voiceChannel) player.destroy();
+
+}
+/*
+* Error & Client Event
+*/
 client.on("disconnect", () =>
   client.logger.log("Bot is disconnecting...", "warn")
 );
@@ -113,6 +151,9 @@ client.on("message", async message => {
   cmdhandler.handleCommand(message);
 });
 
+/*
+* Event Handler
+*/
 readdirSync("./events/").forEach(file => {
     const event = require(`./events/${file}`);
     let eventName = file.split(".")[0];
