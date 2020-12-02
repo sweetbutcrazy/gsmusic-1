@@ -1,5 +1,20 @@
 const { MessageEmbed } = require("discord.js");
+const durasi = require("humanize-duration");
+const dura = durasi(track.duration, { 
+language: "shortEn",
+  languages: {
+    shortEn: {
+      y: () => "tahun",
+      mo: () => "bulan",
+      w: () => "minggu",
+      d: () => "hari",
+      h: () => "jam",
+      m: () => "menit",
+      s: () => "detik",
 
+    },
+  },
+})
 module.exports = {
   name: "play",
   aliases: ["p"],
@@ -62,7 +77,7 @@ module.exports = {
                         .setColor("#D70FB6")
                         .setTimestamp()
                         .setThumbnail(track.displayThumbnail("hqdefault"))
-                        .setDescription(`${emojiaddsong} **Song added to queue **\n[${track.title}](${track.uri}) - \`[${durasi}]\``)
+                        .setDescription(`${emojiaddsong} **Song added to queue **\n[${track.title}](${track.uri}) - \`[${dura}]\``)
                         .setFooter(`Request by: ${message.author.tag}`, message.author.displayAvatarURL());
                     return message.channel.send(thing);
                 }
@@ -72,7 +87,7 @@ module.exports = {
                 var thing = new MessageEmbed()
                     .setColor("#D70FB6")
                     .setThumbnail(res.tracks[0].displayThumbnail("hqdefault"))
-                    .setDescription(`${emojiplaylist} **Playlist added to queue **\n${res.tracks.length} Songs **${res.playlist.name}** - \`[${durasi}]\``)
+                    .setDescription(`${emojiplaylist} **Playlist added to queue **\n${res.tracks.length} Songs **${res.playlist.name}** - \`[${dura}]\``)
                     .setTimeStamp()
                     .setFooter(`Request by: ${message.author.tag}`, message.author.displayAvatarURL());
                 return message.channel.send(thing);
@@ -86,7 +101,7 @@ module.exports = {
                         .setColor("#D70FB6")
                         .setTimestamp()
                         .setThumbnail(track.displayThumbnail("hqdefault"))
-                        .setDescription(` **Songs added to queue **\n[${track.title}](${track.uri}) - \`[${durasi}]\``)
+                        .setDescription(` **Songs added to queue **\n[${track.title}](${track.uri}) - \`[${dura}]\``)
                         .setFooter(`Request by: ${message.author.tag}`, message.author.displayAvatarURL());
                     return message.channel.send(thing);
                 }
