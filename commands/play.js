@@ -29,7 +29,8 @@ module.exports = {
     const player = message.client.manager.create({
       guild: message.guild.id,
       voiceChannel: channel.id,
-      textChannel: message.channel.id
+      textChannel: message.channel.id, 
+      volume: 50
     });
 
     if (player.state !== "CONNECTED") player.connect();
