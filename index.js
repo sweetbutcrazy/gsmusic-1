@@ -48,14 +48,14 @@ client.manager = new Manager({
 language: "shortEn",
   languages: {
     shortEn: {
-      y: () => "Y",
-      mo: () => "MO",
-      w: () => "W",
-      d: () => "D",
-      h: () => "H",
-      m: () => "M",
-      s: () => "S",
-      ms: () => "MS",
+      y: () => "tahun",
+      mo: () => "bulan",
+      w: () => "minggu",
+      d: () => "hari",
+      h: () => "jam",
+      m: () => "menit",
+      s: () => "detik",
+
     },
   },
 })
@@ -100,7 +100,7 @@ process.on("uncaughtException", error => {
 });
 
 client.once("ready", () => {
-  console.log("I am ready!");
+  console.log(`ready with ${client.guilds.cache.size} guild & ${client.users.cache.size} users`);
   client.manager.init(client.user.id);
 });
 
