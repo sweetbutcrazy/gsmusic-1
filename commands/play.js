@@ -1,20 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const durasi = require("humanize-duration");
-const dura = durasi(track.duration, { 
-language: "shortEn",
-  languages: {
-    shortEn: {
-      y: () => "tahun",
-      mo: () => "bulan",
-      w: () => "minggu",
-      d: () => "hari",
-      h: () => "jam",
-      m: () => "menit",
-      s: () => "detik",
 
-    },
-  },
-})
 module.exports = {
   name: "play",
   aliases: ["p"],
@@ -47,7 +33,7 @@ module.exports = {
     });
 
     if (player.state !== "CONNECTED") player.connect();
-    player.set("autoplay", false) 
+    player.set("autoplay", false);
     const search = args.join(" ");
     let res;
 
@@ -67,44 +53,78 @@ module.exports = {
       case "NO_MATCHES":
         if (!player.queue.current) player.destroy();
         return message.reply("there were no results found.");
-            case 'TRACK_LOADED':
-                var track = res.tracks[0];
-                player.queue.add(track);
-                if (!player.playing && !player.paused && !player.queue.size) { 
-                    return player.play();
-                } else {
-                    var thing = new MessageEmbed()
-                        .setColor("#D70FB6")
-                        .setTimestamp()
-                        .setThumbnail(track.displayThumbnail("hqdefault"))
-                        .setDescription(`${emojiaddsong} **Song added to queue **\n[${track.title}](${track.uri}) - \`[${dura}]\``)
-                        .setFooter(`Request by: ${message.author.tag}`, message.author.displayAvatarURL());
-                    return message.channel.send(thing);
-                }
-            case 'PLAYLIST_LOADED':
-                player.queue.add(res.tracks);
-                if (!player.playing && !player.paused && player.queue.totalSize === res.tracks.length) player.play();
-                var thing = new MessageEmbed()
-                    .setColor("#D70FB6")
-                    .setThumbnail(res.tracks[0].displayThumbnail("hqdefault"))
-                    .setDescription(`${emojiplaylist} **Playlist added to queue **\n${res.tracks.length} Songs **${res.playlist.name}** - \`[${dura}]\``)
-                    .setTimeStamp()
-                    .setFooter(`Request by: ${message.author.tag}`, message.author.displayAvatarURL());
-                return message.channel.send(thing);
-            case 'SEARCH_RESULT':
-                var track = res.tracks[0];
-                player.queue.add(track);
-                if (!player.playing && !player.paused && !player.queue.size) {
-                    return player.play();
-                } else {
-                    var thing = new MessageEmbed()
-                        .setColor("#D70FB6")
-                        .setTimestamp()
-                        .setThumbnail(track.displayThumbnail("hqdefault"))
-                        .setDescription(` **Songs added to queue **\n[${track.title}](${track.uri}) - \`[${dura}]\``)
-                        .setFooter(`Request by: ${message.author.tag}`, message.author.displayAvatarURL());
-                    return message.channel.send(thing);
-                }
+      case "TRACK_LOADED":
+        var track = res.tracks[0];
+        player.queue.add(track);
+        const dura = durasi(track.duration, {
+          language: "shortEn",
+          languages: {
+            shortEn: {
+              y: () => "tahun",
+              mo: () => "bulan",
+              w: () => "minggu",
+              d: () => "hari",
+              h: () => "jam",
+              m: () => "menit",
+              s: () => "detik"
+            }
+          }
+        });
+        if (!player.playing && !player.paused && !player.queue.size) {
+          return player.play();
+        } else {
+          var thing = new MessageEmbed()
+            .setColor("#D70FB6")
+            .setTimestamp()
+            .setThumbnail(track.displayThumbnail("hqdefault"))
+            .setDescription(
+              `**Song added to queue **\n[${track.title}](${track.uri}) - \`[${dura}]\``
+            )
+            .setFooter(
+              `Request by: ${message.author.tag}`,
+              message.author.displayAvatarURL()
+            );
+          return message.channel.send(thing);
+        }
+      case "PLAYLIST_LOADED":
+        player.queue.add(res.tracks);
+        if (
+          !player.playing &&
+          !player.paused &&
+          player.queue.totalSize === res.tracks.length
+        )
+          player.play();
+        var thing = new MessageEmbed()
+          .setColor("#D70FB6")
+          .setThumbnail(res.tracks[0].displayThumbnail("hqdefault"))
+          .setDescription(
+            ` **Playlist added to queue **\n${res.tracks.length} Songs **${res.playlist.name}** - \`[${dura}]\``
+          )
+          .setTimeStamp()
+          .setFooter(
+            `Request by: ${message.author.tag}`,
+            message.author.displayAvatarURL()
+          );
+        return message.channel.send(thing);
+      case "SEARCH_RESULT":
+        var track = res.tracks[0];
+        player.queue.add(track);
+        if (!player.playing && !player.paused && !player.queue.size) {
+          return player.play();
+        } else {
+          var thing = new MessageEmbed()
+            .setColor("#D70FB6")
+            .setTimestamp()
+            .setThumbnail(track.displayThumbnail("hqdefault"))
+            .setDescription(
+              ` **Songs added to queue **\n[${track.title}](${track.uri}) - \`[${dura}]\``
+            )
+            .setFooter(
+              `Request by: ${message.author.tag}`,
+              message.author.displayAvatarURL()
+            );
+          return message.channel.send(thing);
         }
     }
-}
+  }
+};
