@@ -56,35 +56,23 @@ module.exports = {
       case "TRACK_LOADED":
         var track = res.tracks[0];
         player.queue.add(track);
-        const dura = durasi(track.duration, {
-          language: "shortEn",
-          languages: {
-            shortEn: {
-              y: () => "tahun",
-              mo: () => "bulan",
-              w: () => "minggu",
-              d: () => "hari",
-              h: () => "jam",
-              m: () => "menit",
-              s: () => "detik"
-            }
-          }
-        });
+        
         if (!player.playing && !player.paused && !player.queue.size) {
           return player.play();
         } else {
-          var thing = new MessageEmbed()
+          var mbd = new MessageEmbed()
             .setColor("#D70FB6")
-            .setTimestamp()
+            
             .setThumbnail(track.displayThumbnail("hqdefault"))
             .setDescription(
-              `**Song added to queue **\n[${track.title}](${track.uri}) - \`[${dura}]\``
+              `**Song added to queue **\n[${track.title}](${track.uri}) - \`[${client.dura}]\``
             )
             .setFooter(
               `Request by: ${message.author.tag}`,
               message.author.displayAvatarURL()
             );
-          return message.channel.send(thing);
+          .setTimeStamp()
+          return message.channel.send({embed: mbd});
         }
       case "PLAYLIST_LOADED":
         player.queue.add(res.tracks);
@@ -94,18 +82,19 @@ module.exports = {
           player.queue.totalSize === res.tracks.length
         )
           player.play();
-        var thing = new MessageEmbed()
+        var mbd = new MessageEmbed()
           .setColor("#D70FB6")
           .setThumbnail(res.tracks[0].displayThumbnail("hqdefault"))
           .setDescription(
-            ` **Playlist added to queue **\n${res.tracks.length} Songs **${res.playlist.name}** - \`[${dura}]\``
+            ` **Playlist added to queue **\n${res.tracks.length} Songs **${res.playlist.name}** - \`[${client.dura}]\``
           )
-          .setTimeStamp()
+          
           .setFooter(
             `Request by: ${message.author.tag}`,
             message.author.displayAvatarURL()
           );
-        return message.channel.send(thing);
+        .setTimeStamp()
+        return message.channel.send({embed: mbd});
       case "SEARCH_RESULT":
         var track = res.tracks[0];
         player.queue.add(track);
@@ -114,15 +103,16 @@ module.exports = {
         } else {
           var thing = new MessageEmbed()
             .setColor("#D70FB6")
-            .setTimestamp()
+            
             .setThumbnail(track.displayThumbnail("hqdefault"))
             .setDescription(
-              ` **Songs added to queue **\n[${track.title}](${track.uri}) - \`[${dura}]\``
+              ` **Songs added to queue **\n[${track.title}](${track.uri}) - \`[${client.dura}]\``
             )
             .setFooter(
               `Request by: ${message.author.tag}`,
               message.author.displayAvatarURL()
             );
+           .setTimeStamp()
           return message.channel.send(thing);
         }
     }
