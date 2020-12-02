@@ -44,7 +44,9 @@ module.exports = {
         throw res.exception;
       }
     } catch (err) {
-      return message.reply(`there was an error while searching: ${err.message}`);
+      return message.reply(
+        `there was an error while searching: ${err.message}`
+      );
     }
 
     switch (res.loadType) {
@@ -54,24 +56,24 @@ module.exports = {
       case "TRACK_LOADED":
         var track = res.tracks[0];
         player.queue.add(track);
-        
+
         if (!player.playing && !player.paused && !player.queue.size) {
           return player.play();
         } else {
-          
-          return message.channel.send({embed: { 
-                 color: "##D70FB6", 
-           description: `**Songs added to queue **\n[${track.title}](${track.uri}) - \`[${client.dura}]\``, 
-           thumbnail: {
-		url: `${track.displayThumbnail("hqdefault")}`,
-	},
-          timestamp: new Date(),
-	footer: {
-		text: `Request by: ${message.author.tag}`, 
-		icon_url: `${message.author.displayAvatarURL()}`,
-	},
-         
-         });
+          return message.channel.send({
+            embed: {
+              color: "##D70FB6",
+              description: `**Songs added to queue **\n[${track.title}](${track.uri}) - \`[${client.dura}]\``,
+              thumbnail: {
+                url: `${track.displayThumbnail("hqdefault")}`
+              },
+              timestamp: new Date(),
+              footer: {
+                text: `Request by: ${message.author.tag}`,
+                icon_url: `${message.author.displayAvatarURL()}`
+              }
+            }
+          });
         }
       case "PLAYLIST_LOADED":
         player.queue.add(res.tracks);
@@ -81,40 +83,41 @@ module.exports = {
           player.queue.totalSize === res.tracks.length
         )
           player.play();
-        
-        return message.channel.send({embed: { 
-                 color: "##D70FB6", 
-           description: `**Playlist added to queue **\n${res.tracks.length} Songs **${res.playlist.name}** - \`[${client.dura}]\``, 
-           thumbnail: {
-		url: `${res.tracks[0].displayThumbnail("hqdefault")}`,
-	},
-          timestamp: new Date(),
-	footer: {
-		text: `Request by: ${message.author.tag}`, 
-		icon_url: `${message.author.displayAvatarURL()}`,
-	},
-         
-         }); 
+
+        return message.channel.send({
+          embed: {
+            color: "##D70FB6",
+            description: `**Playlist added to queue **\n${res.tracks.length} Songs **${res.playlist.name}** - \`[${client.dura}]\``,
+            thumbnail: {
+              url: `${res.tracks[0].displayThumbnail("hqdefault")}`
+            },
+            timestamp: new Date(),
+            footer: {
+              text: `Request by: ${message.author.tag}`,
+              icon_url: `${message.author.displayAvatarURL()}`
+            }
+          }
+        });
       case "SEARCH_RESULT":
         var track = res.tracks[0];
         player.queue.add(track);
         if (!player.playing && !player.paused && !player.queue.size) {
           return player.play();
         } else {
-          
-          return message.channel.send({embed: { 
-                 color: "##D70FB6", 
-           description: `**Songs added to queue **\n[${track.title}](${track.uri}) - \`[${client.dura}]\``, 
-           thumbnail: {
-		url: `${track.displayThumbnail("hqdefault")}`,
-	},
-          timestamp: new Date(),
-	footer: {
-		text: `Request by: ${message.author.tag}`, 
-		icon_url: `${message.author.displayAvatarURL()}`,
-	},
-         
-         });
+          return message.channel.send({
+            embed: {
+              color: "##D70FB6",
+              description: `**Songs added to queue **\n[${track.title}](${track.uri}) - \`[${client.dura}]\``,
+              thumbnail: {
+                url: `${track.displayThumbnail("hqdefault")}`
+              },
+              timestamp: new Date(),
+              footer: {
+                text: `Request by: ${message.author.tag}`,
+                icon_url: `${message.author.displayAvatarURL()}`
+              }
+            }
+          });
         }
     }
   }
