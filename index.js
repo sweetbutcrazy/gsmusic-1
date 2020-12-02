@@ -72,7 +72,7 @@ language: "shortEn",
   .on("queueEnd", player => {
     const mbd = new MessageEmbed() 
     .setColor("RED")
-    .setTitle(`<a:sry:783618394782957599>`, "Good Bye... im leaving the channel.")
+    .setTitle("Good Bye... im leaving the channel.", `https://cdn.discordapp.com/emojis/780091765696888852.gif`)
     .setDescription(`Thanks for using **${client.user.username}**`)
     .setFooter(`${client.user.username} ~ Gang Sebelah © 2020`)
     .setTimeStamp()
