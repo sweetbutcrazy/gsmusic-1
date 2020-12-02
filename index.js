@@ -59,6 +59,7 @@ language: "shortEn",
     },
   },
 })
+client.dura = dura;
   const start = new MessageEmbed()
         .setDescription(`🎶 **Started Playing**\n [${track.title}](${track.uri}) - \n\`[${dura}]\``)
         .setThumbnail(track.displayThumbnail("hqdefault"))
