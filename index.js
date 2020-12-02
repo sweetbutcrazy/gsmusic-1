@@ -1,13 +1,13 @@
-const { Client, Collection, Intents , MessageEmbed} = require("discord.js");
+const { Client, Collection, Intents, MessageEmbed } = require("discord.js");
 const { readdirSync } = require("fs");
 const { Manager } = require("erela.js");
 const Spotify = require("erela.js-spotify");
-const handler = require("@tomdev/discord.js-command-handler")
+const handler = require("@tomdev/discord.js-command-handler");
 const durasi = require("humanize-duration");
 const client = new Client({
-    disableMentions: "everyone",
-    partials: ['MESSAGE', 'CHANNEL', 'REACTION'],
-    ws: { intents: Intents.ALL }
+  disableMentions: "everyone",
+  partials: ["MESSAGE", "CHANNEL", "REACTION"],
+  ws: { intents: Intents.ALL }
 });
 client.config = require("./config.json");
 client.logger = require("./util/logger.js");
@@ -16,7 +16,6 @@ const { clientID, clientSecret } = require("./config.json");
 
 var prefix = client.config.prefix;
 var cmdhandler = new handler(client, "/commands", prefix);
-
 
 client.manager = new Manager({
   nodes: [
@@ -39,87 +38,104 @@ client.manager = new Manager({
     })
   ]
 })
-/*
-* Lavalink Event
-*/
-  .on("nodeConnect", node => console.log(`Node "${node.options.identifier}" connected.`))
-  .on("nodeError", (node, error) => console.log(
-    `Node "${node.options.identifier}" encountered an error: ${error.message}.`
-  ))
+  /*
+   * Lavalink Event
+   */
+  .on("nodeConnect", node =>
+    console.log(`Node "${node.options.identifier}" connected.`)
+  )
+  .on("nodeError", (node, error) =>
+    console.log(
+      `Node "${node.options.identifier}" encountered an error: ${error.message}.`
+    )
+  )
   .on("trackStart", (player, track) => {
-  const dura = durasi(track.duration, { 
-language: "shortEn",
-  languages: {
-    shortEn: {
-      y: () => "year",
-      mo: () => "mnth",
-      w: () => "week",
-      d: () => "days",
-      h: () => "hrs",
-      m: () => "mins",
-      s: () => "secs",
+    const dura = durasi(track.duration, {
+      language: "shortEn",
+      languages: {
+        shortEn: {
+          y: () => "year",
+          mo: () => "mnth",
+          w: () => "week",
+          d: () => "days",
+          h: () => "hrs",
+          m: () => "mins",
+          s: () => "secs"
+        }
+      }
+    });
+    client.dura = dura;
+    const start = new MessageEmbed()
+      .setDescription(
+        `🎶 **Started Playing**\n [${track.title}](${track.uri}) \n\`[${dura}]\``
+      )
+      .setThumbnail(track.displayThumbnail("hqdefault"))
+      .setColor("#D70FB6")
+      .setTimestamp()
+      .setFooter(
+        `Request by: ${track.requester.tag}`,
+        track.requester.displayAvatarURL()
+      );
 
-    },
-  },
-})
-  client.dura = dura;
-  const start = new MessageEmbed()
-        .setDescription(`🎶 **Started Playing**\n [${track.title}](${track.uri}) \n\`[${dura}]\``)
-        .setThumbnail(track.displayThumbnail("hqdefault"))
-        .setColor("#D70FB6")
-        .setTimestamp()
-        .setFooter(`Request by: ${track.requester.tag}`, track.requester.displayAvatarURL());
-    
     const channel = client.channels.cache.get(player.textChannel);
-    channel.send({embed: start})
+    channel.send({ embed: start });
   })
   .on("queueEnd", player => {
-    const mbd = new MessageEmbed() 
-    .setColor("RED")
-    .setAuthor("Good Bye... im leaving the channel.", 'https://cdn.discordapp.com/emojis/780091765696888852.gif', 'https://discord.gg/gangsebelah') 
-    .setDescription(`Thanks for using **${client.user.username}**`)
-    .setImage(`https://cdn.discordapp.com/attachments/773766203914321980/782599730215518228/banner_server_15.png?width=960&height=422`) 
-    .setFooter(`${client.user.username} ~ Gang Sebelah © 2020`)
+    const mbd = new MessageEmbed()
+      .setColor("RED")
+      .setAuthor(
+        "Good Bye... im leaving the channel.",
+        "https://cdn.discordapp.com/emojis/780091765696888852.gif",
+        "https://discord.gg/gangsebelah"
+      )
+      .setDescription(`Thanks for using **${client.user.username}**`)
+      .setImage(
+        `https://cdn.discordapp.com/attachments/773766203914321980/782599730215518228/banner_server_15.png?width=960&height=422`
+      )
+      .setFooter(`${client.user.username} ~ Gang Sebelah © 2020`);
     const channel = client.channels.cache.get(player.textChannel);
-    channel.send({embed: mbd});
+    channel.send({ embed: mbd });
     player.destroy();
   })
-  .on("trackEnd", player => {
-   const autoplay = player.get("autoplay")
+  .on("trackEnd", async player => {
+    const autoplay = player.get("autoplay");
     if (autoplay === true) {
-        const requester = player.get("requester");
-        const oldidentifier = player.get("identifier");
-        const identifier = player.queue.current.identifier;
-        const search = `https://www.youtube.com/watch?v=${identifier}&list=RD${oldidentifier}`;
-        res = await player.search(search, requester);
-          player.queue.add(res.tracks[1]);
+      const requester = player.get("requester");
+      const oldidentifier = player.get("identifier");
+      const identifier = player.queue.current.identifier;
+      const search = `https://www.youtube.com/watch?v=${identifier}&list=RD${oldidentifier}`;
+      var res = await player.search(search, requester);
+      player.queue.add(res.tracks[1]);
     }
-	
-})
-    .on("trackStuck", player => {
+  })
+  .on("trackStuck", player => {
     const channel = client.channels.cache.get(player.textChannel);
-    const thing = new MessageEmbed()
-        .setColor("RED")
-        .setDescription("❌ Error when loading song! Track is stuck");
-    channel.send({embed: mbd});
-    client.logger.log(`Error when loading song! Track is stuck in [${player.guild}]`, "error");
-    if (!player.voiceChannel) player.destroy();
-
-})
-
-    .on("trackError", player => {
-     const channel = client.channels.cache.get(player.textChannel);
     const mbd = new MessageEmbed()
-        .setColor("RED")
-        .setDescription("❌ Error when loading song! Track is error");
-    channel.send({embed: mbd});
-    client.logger.log(`Error when loading song! Track is error in [${player.guild}]`, "error");
+      .setColor("RED")
+      .setDescription("❌ Error when loading song! Track is stuck");
+    channel.send({ embed: mbd });
+    client.logger.log(
+      `Error when loading song! Track is stuck in [${player.guild}]`,
+      "error"
+    );
     if (!player.voiceChannel) player.destroy();
+  })
 
-}) 
+  .on("trackError", player => {
+    const channel = client.channels.cache.get(player.textChannel);
+    const mbd = new MessageEmbed()
+      .setColor("RED")
+      .setDescription("❌ Error when loading song! Track is error");
+    channel.send({ embed: mbd });
+    client.logger.log(
+      `Error when loading song! Track is error in [${player.guild}]`,
+      "error"
+    );
+    if (!player.voiceChannel) player.destroy();
+  });
 /*
-* Error & Client Event
-*/
+ * Error & Client Event
+ */
 client.on("disconnect", () =>
   client.logger.log("Bot is disconnecting...", "warn")
 );
@@ -141,7 +157,9 @@ process.on("uncaughtException", error => {
 });
 
 client.once("ready", () => {
-  console.log(`ready with ${client.guilds.cache.size} guild & ${client.users.cache.size} users`);
+  console.log(
+    `ready with ${client.guilds.cache.size} guild & ${client.users.cache.size} users`
+  );
   client.manager.init(client.user.id);
 });
 
@@ -152,13 +170,13 @@ client.on("message", async message => {
 });
 
 /*
-* Event Handler
-*/
+ * Event Handler
+ */
 readdirSync("./events/").forEach(file => {
-    const event = require(`./events/${file}`);
-    let eventName = file.split(".")[0];
-    client.logger.log(`Loading Events Client ${eventName}`, "event");
-    client.on(eventName, event.bind(null, client));
+  const event = require(`./events/${file}`);
+  let eventName = file.split(".")[0];
+  client.logger.log(`Loading Events Client ${eventName}`, "event");
+  client.on(eventName, event.bind(null, client));
 });
 
 client.login(client.config.token);
