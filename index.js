@@ -75,7 +75,7 @@ language: "shortEn",
     .setTitle("Good Bye... im leaving the channel.")
     .setDescription(`Thanks for using **${client.users.username}**`) 
     const channel = client.channels.cache.get(player.textChannel);
-    channel.send({embed: mbd} 
+    channel.send({embed: mbd});
     player.destroy();
   });
 
