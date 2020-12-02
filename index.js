@@ -75,7 +75,7 @@ client.dura = dura;
     .setColor("RED")
     .setAuthor("Good Bye... im leaving the channel.", 'https://cdn.discordapp.com/emojis/780091765696888852.gif', 'https://discord.gg/gangsebelah') 
     .setDescription(`Thanks for using **${client.user.username}**`)
-    .addImage(`https://cdn.discordapp.com/attachments/773766203914321980/782599730215518228/banner_server_15.png?width=960&height=422`) 
+    .setImage(`https://cdn.discordapp.com/attachments/773766203914321980/782599730215518228/banner_server_15.png?width=960&height=422`) 
     .setFooter(`${client.user.username} ~ Gang Sebelah © 2020`)
     const channel = client.channels.cache.get(player.textChannel);
     channel.send({embed: mbd});
