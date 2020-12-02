@@ -91,8 +91,9 @@ module.exports = {
           .join("\n");
         const mbd = new MessageEmbed() 
         .setColor("RED")
+        .setAuthor(`<a:60sec:783543097790824479>`)
         .setDescription(results) 
-        .setFooter(`${client.user.username} ~ Gang Sebelah © 2020`, "https://cdn.discordapp.com/emojis/783049850996523048.gif") 
+        .setFooter(`${client.user.username} ~ Gang Sebelah © 2020`) 
         message.channel.send({ embed: mbd });
       
         try {
