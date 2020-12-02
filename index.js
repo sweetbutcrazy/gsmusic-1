@@ -73,10 +73,9 @@ client.dura = dura;
   .on("queueEnd", player => {
     const mbd = new MessageEmbed() 
     .setColor("RED")
-    .setAuthor("Good Bye... im leaving the channel.", `https://cdn.discordapp.com/emojis/780091765696888852.gif`, true)
+    .setAuthor("Good Bye... im leaving the channel.", 'https://cdn.discordapp.com/emojis/780091765696888852.gif', 'https://discord.gg/gangsebelah') 
     .setDescription(`Thanks for using **${client.user.username}**`)
     .setFooter(`${client.user.username} ~ Gang Sebelah © 2020`)
-    .setTimeStamp()
     const channel = client.channels.cache.get(player.textChannel);
     channel.send({embed: mbd});
     player.destroy();
