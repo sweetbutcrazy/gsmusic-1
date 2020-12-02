@@ -63,7 +63,7 @@ module.exports = {
           return message.channel.send({
             embed: {
               color: "#D70FB6",
-              description: `**Songs added to queue **\n[${track.title}](${track.uri}) - \`[${client.dura}]\``,
+              description: `**Songs added to queue **\n[${track.title}](${track.uri})  \n\`[${client.dura}]\``,
               thumbnail: {
                 url: `${track.displayThumbnail("hqdefault")}`
               },
@@ -87,7 +87,7 @@ module.exports = {
         return message.channel.send({
           embed: {
             color: "#D70FB6",
-            description: `**Playlist added to queue **\n${res.tracks.length} Songs **${res.playlist.name}** - \`[${client.dura}]\``,
+            description: `**Playlist added to queue **\n${res.tracks.length} Songs **${res.playlist.name}** \n\`[${client.dura}]\``,
             thumbnail: {
               url: `${res.tracks[0].displayThumbnail("hqdefault")}`
             },
@@ -107,7 +107,7 @@ module.exports = {
           return message.channel.send({
             embed: {
               color: "#D70FB6",
-              description: `**Songs added to queue **\n[${track.title}](${track.uri}) - \`[${client.dura}]\``,
+              description: `**Songs added to queue **\n[${track.title}](${track.uri}) \n\`[${client.dura}]\``,
               thumbnail: {
                 url: `${track.displayThumbnail("hqdefault")}`
               },
