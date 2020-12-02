@@ -145,6 +145,7 @@ module.exports = {
         if (!player.playing && !player.paused && !player.queue.size)
           player.play();
         return message.reply(`enqueuing \`${track.title}\`.`);
-    }*/
+*/
+    }
   }
 };
