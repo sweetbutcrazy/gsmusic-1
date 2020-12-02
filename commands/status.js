@@ -13,12 +13,11 @@ module.exports = {
     run: async function (client, command, args, message) {
         const duration1 = moment.duration(message.client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
         const cpu = await si.cpu();
-        const about = message.client.emoji.about;
         const embed = new MessageEmbed()
             .setColor("BLACK")
             .setThumbnail(message.client.user.displayAvatarURL())
             .setFooter(`${message.client.user.username} ~ Gang Sebelah © 2020`)
-            .setDescription(`${about} **Status**
+            .setDescription(`
 **= STATISTICS =**
 **• Servers** : ${message.client.guilds.cache.size.toLocaleString()}
 **• Channels** : ${message.client.channels.cache.size.toLocaleString()}
