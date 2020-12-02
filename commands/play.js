@@ -101,7 +101,7 @@ module.exports = {
         if (!player.playing && !player.paused && !player.queue.size) {
           return player.play();
         } else {
-          var thing = new MessageEmbed()
+          var mbd = new MessageEmbed()
             .setColor("#D70FB6")
             
             .setThumbnail(track.displayThumbnail("hqdefault"))
@@ -113,7 +113,7 @@ module.exports = {
               message.author.displayAvatarURL()
             )
            .setTimeStamp()
-          return message.channel.send(thing);
+          return message.channel.send({embed: mbd});
         }
     }
   }
