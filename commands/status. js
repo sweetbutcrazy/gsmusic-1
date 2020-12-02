@@ -5,12 +5,12 @@ const os = require('os')
 const si = require('systeminformation');
 
 module.exports = {
-    name: "status",
-    aliases: [ "stats" ],
-    category: "Main", 
-    description: "Show status bot",
-    usage: "",
-    run: async function(message, args) {
+    name: "status", 
+    aliases: ["stats"],
+    category: "Main",
+    description: "This is an stats command",
+    usage: "stats",
+    run: async function (client, command, args, message) {
         const duration1 = moment.duration(message.client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
         const cpu = await si.cpu();
         const about = message.client.emoji.about;
