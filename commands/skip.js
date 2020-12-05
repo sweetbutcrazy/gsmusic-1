@@ -5,11 +5,11 @@ module.exports = {
     usage: "skip", 
     run: async function(client, command, args, message ) { 
       const player = message.client.manager.get(message.guild.id);
-      if (!player) return message.reply("there is no player for this guild.");
+      if (!player) return message.channel.send({embed: {color: client.color, description: "There is no player for this guild."}});
   
       const { channel } = message.member.voice;
-      if (!channel) return message.reply("you need to join a voice channel.");
-      if (channel.id !== player.voiceChannel) return message.channel.send(`You must be in the same channel as ${client.user.username}`);
+      if (!channel) return message.reply({embed: {color: client.color, description: "You need to join a voice channel."}});
+      if (channel.id !== player.voiceChannel) return message.channel.send({embed: {color: client.color, description: `You must be in the same channel as ${client.user.username}`}});
 
       if (!player.queue.current) return message.channel.send({embed: {color: client.color, description: "There is no music playing."}})
 
