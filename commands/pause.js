@@ -11,7 +11,7 @@ module.exports = {
     const { channel } = message.member.voice;
     
     if (!channel) return message.channel.send({embed: {color: "#D70FB6", description: "You need to join a voice channel."}});
-    if (channel.id !== player.voiceChannel) return message.channel.send({embed: {color: "#D70FB6", "description: `You must be in the same channel as ${client.users.username}`}});
+    if (channel.id !== player.voiceChannel) return message.channel.send({embed: {color: "#D70FB6", description: `You must be in the same channel as ${client.users.username}`}});
     
     player.destroy();
     return message.channel.send({embed: {color: "#D70FB6", description: "Stopped the music.");
