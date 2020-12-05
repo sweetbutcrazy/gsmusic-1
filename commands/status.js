@@ -18,14 +18,7 @@ module.exports = {
             .setThumbnail(message.client.user.displayAvatarURL())
             .setFooter(`${message.client.user.username} ~ Gang Sebelah © 2020`)
             .setAuthor("STATISTIC", "https://cdn.discordapp.com/emojis/588679397909987350.png", "https://discord.gg/gangsebelah") 
-            .addField("**<a:arroww:591269131941183515> GENERAL :**", `
-**• Username: ${client.user.tag}
-**• Servers** : ${message.client.guilds.cache.size.toLocaleString()}
-**• Channels** : ${message.client.channels.cache.size.toLocaleString()}
-**• Users** : ${message.client.users.cache.size.toLocaleString()}
-**• [Discord.js](https://discord.js.org/#/) : v${version}**
-**• [Node](https://node.js.org/) : ${process.version}**
-`)
+            .addField("**<a:arroww:591269131941183515> GENERAL :**", `**• Username: ${client.user.tag} \n• Servers : ${message.client.guilds.cache.size.toLocaleString()} \n• Channels : ${message.client.channels.cache.size.toLocaleString()} \n• Users : ${message.client.users.cache.size.toLocaleString()} \n• [Discord.js](https://discord.js.org/#/) : v${version} \n• [Node](https://node.js.org/) : ${process.version}**`)
            .addField("**<a:arroww:591269131941183515> SYSTEM :**", `
 **• Platfrom** : \`${os.type}\`
 **• Uptime** : \`${duration1}\`
