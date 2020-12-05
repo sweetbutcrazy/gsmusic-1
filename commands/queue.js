@@ -3,7 +3,7 @@ module.exports = {
     aliases: ["q"],
     category: "Main",
     description: "This is an example command",
-    usage: "!example",
+    usage: "queue",
     run: async function (client, command, args, message) { 
      const player = message.client.manager.get(message.guild.id);
     if (!player) return message.channel.send({embed: {color: client.color, description: "There is no player for this guild."}});
@@ -30,6 +30,6 @@ module.exports = {
 
     embed.setFooter(`Page ${page > maxPages ? maxPages : page} of ${maxPages}`);
 
-    return message.reply(embed);
+    return message.channel.send({embed: embed});
     }
 }
