@@ -86,7 +86,7 @@ client.manager = new Manager({
       .setAuthor("Add more songs before im leaving in 1 minutes.", 
                  "https://cdn.discordapp.com/emojis/745870325887008769.png", 
                  "https://discord.gg/gangsebelah" 
-                 ") 
+                 ) 
       .setFooter(`${client.user.username} ~ Gang Sebelah © 2020`);
     const channel = client.channels.cache.get(player.textChannel);
     channel.reply({ embed: mbd });
