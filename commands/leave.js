@@ -12,15 +12,15 @@ module.exports = {
 
 		if (!channel) {
             let thing = new MessageEmbed()
-                .setColor("RED")
-                .setDescription("You need to join a voice channel first!");
+                .setColor(client.color)
+                .setDescription("You need to join a voice channel!");
             return message.channel.send(thing);
         }
 
         if (channel.id !== player.voiceChannel) {
             let thing = new MessageEmbed()
-                .setColor("RED")
-                .setDescription(`You must be in the same channel as ${message.client.user}`);
+                .setColor(client.color)
+                .setDescription(`You must be in the same channel as ${client.user}`);
             return message.channel.send(thing);
         }
 
@@ -28,12 +28,16 @@ module.exports = {
 
         player.destroy();
         
-        let thing = new MessageEmbed()
-            .setColor("BLACK")
-            .setDescription(`${emojiLeave} **Leave the voice channel**\nThank you for using ${message.client.user.username}!`)
-            .setImage('https://media.discordapp.net/attachments/773766203914321980/773785370503806976/banner_serverr_10.png?width=960&height=422')
-            .setFooter(`${message.client.user.username} ~ Gang Sebelah © 2020`);
-        return message.channel.send(thing);
+         const mbd = new MessageEmbed()
+      .setColor(client.color)
+      .setAuthor(
+        "Good Bye... im leaving the channel.",
+        "https://cdn.discordapp.com/emojis/780091765696888852.gif",
+        "https://discord.gg/gangsebelah")
+      .setDescription(`Thanks for using **${client.user.username}**`)
+      .setImage(`https://cdn.discordapp.com/attachments/773766203914321980/782599730215518228/banner_server_15.png?width=960&height=422`)
+      .setFooter(`${client.user.username} ~ Gang Sebelah © 2020`);
+        return message.channel.send(mbd);
 	
   	}
 };  
