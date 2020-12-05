@@ -34,7 +34,9 @@ module.exports = {
       selfDeafen: true
     });
 
-    if (player.state !== "CONNECTED") player.connect();
+    if (player.state !== "CONNECTED") 
+    
+    player.connect() return 
     player.set("autoplay", false);
     const search = args.join(" ");
     let res;
