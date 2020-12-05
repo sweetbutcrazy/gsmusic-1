@@ -6,7 +6,7 @@ module.exports = {
     usage: "stop",
     run: async function (client, command, args, message) { 
     const player = message.client.manager.get(message.guild.id);
-    if (!player) return message.reply({embed: {color: "#D70FB6c, description: "There is no player for this guild.");
+    if (!player) return message.reply({embed: {color: "#D70FB6c, description: "There is no player for this guild."}});
 
     const { channel } = message.member.voice;
     
