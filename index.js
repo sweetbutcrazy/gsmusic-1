@@ -81,7 +81,7 @@ client.manager = new Manager({
     channel.send({ embed: start });
 
      client.requester = `<@${track.requester.id}>`
-    
+    clearTimeout(client.ms);
   })
   .on("queueEnd", (player, track) => {
     const mbd = new MessageEmbed()
@@ -94,7 +94,7 @@ client.manager = new Manager({
     const channel = client.channels.cache.get(player.textChannel);
     channel.send(client.requester, {embed: mbd });
 
-    setTimeout(() => {
+    var ms = setTimeout(() => {
     player.destroy();
     const mbd = new MessageEmbed()
       .setColor("#D70FB6")
@@ -110,7 +110,8 @@ client.manager = new Manager({
       .setFooter(`${client.user.username} ~ Gang Sebelah © 2020`);
     const channel = client.channels.cache.get(player.textChannel);
     channel.send({ embed: mbd });
-    }, 60000) 
+    }, 60000)
+    client.ms = ms;
   })
   .on("trackEnd", async player => {
     const autoplay = player.get("autoplay");
