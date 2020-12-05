@@ -40,7 +40,11 @@ module.exports = {
 > **• Heap Total** : \`${(process.memoryUsage().heapTotal / 1024 / 1024).toFixed(2)} Mbps\`
 > **• Heap Usage** : \`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} Mbps\`
 
-`);
+`)
+            .addField("**SUPPORT :**", `
+[Invite](https://discord.com/api/oauth2/authorize?client_id=${client.user.username}&permissions=8&scope=bot)
+[Guild](https://discord.gg/gangsebelah)
+`) 
         message.channel.send({embed: embed});
     }
 } 
