@@ -17,20 +17,22 @@ module.exports = {
             .setColor("BLACK")
             .setThumbnail(message.client.user.displayAvatarURL())
             .setFooter(`${message.client.user.username} ~ Gang Sebelah © 2020`)
+            .setAuthor("STATISTIC", "https://cdn.discordapp.com/emojis/588679397909987350.png", "https://discord.gg/gangsebelah") 
             .setDescription(`
-**= STATISTICS =**
 **• Servers** : ${message.client.guilds.cache.size.toLocaleString()}
 **• Channels** : ${message.client.channels.cache.size.toLocaleString()}
 **• Users** : ${message.client.users.cache.size.toLocaleString()}
 **• Discord.js** : v${version}
 **• Node** : ${process.version}
-**= SYSTEM =**
+
+**• SYSTEM :**
 **• Platfrom** : ${os.type}
 **• Uptime** : ${duration1}
 **• CPU** :
 > **• Cores** : ${cpu.cores}
 > **• Model** : ${os.cpus()[0].model} 
 > **• Speed** : ${os.cpus()[0].speed} MHz
+
 **• MEMORY** :
 > **• Total Memory** : ${(os.totalmem() / 1024 / 1024).toFixed(2)} Mbps
 > **• Free Memory** : ${(os.freemem() / 1024 / 1024).toFixed(2)} Mbps
