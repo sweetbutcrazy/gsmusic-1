@@ -82,8 +82,8 @@ client.manager = new Manager({
   })
   .on("queueEnd", player => {
     const mbd = new MessageEmbed()
-      .setColor("RED")
-      .setDescription("i give u 1 minute for add more queue.") 
+      .setColor("#D70FB6")
+      .setDescription("Add more songs before im leaving in 1 minutes.") 
       .setFooter(`${client.user.username} ~ Gang Sebelah © 2020`);
     const channel = client.channels.cache.get(player.textChannel);
     channel.send({ embed: mbd });
@@ -91,7 +91,7 @@ client.manager = new Manager({
     setTimeout(() => {
     player.destroy();
     const mbd = new MessageEmbed()
-      .setColor("RED")
+      .setColor("#D70FB6")
       .setAuthor(
         "Good Bye... im leaving the channel.",
         "https://cdn.discordapp.com/emojis/780091765696888852.gif",
