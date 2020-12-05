@@ -66,8 +66,12 @@ client.manager = new Manager({
     });
     client.dura = dura;
     const start = new MessageEmbed()
+      .setAuthor("Started Playing", 
+                 "https://cdn.discordapp.com/emojis/780844360346107905.png", 
+                 "https://discord.gg/gangsebelah"
+                 )
       .setDescription(
-        `🎶 **Started Playing**\n [${track.title}](${track.uri}) \n\`[${dura}]\``
+        `[${track.title}](${track.uri}) \n\`[${dura}]\``
       )
       .setThumbnail(track.displayThumbnail("hqdefault"))
       .setColor("#D70FB6")
