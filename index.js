@@ -79,6 +79,9 @@ client.manager = new Manager({
 
     const channel = client.channels.cache.get(player.textChannel);
     channel.send({ embed: start });
+     setTimeout(() => {
+      channel.send(`<@${track.requester.id}>`)
+     }, track.duration)
   })
   .on("queueEnd", (player, track) => {
     const mbd = new MessageEmbed()
@@ -89,7 +92,7 @@ client.manager = new Manager({
                  ) 
       .setFooter(`${client.user.username} ~ Gang Sebelah © 2020`);
     const channel = client.channels.cache.get(player.textChannel);
-    channel.send(`<@${track.requester.id}>`, {embed: mbd });
+    channel.send(`{embed: mbd });
 
     setTimeout(() => {
     player.destroy();
