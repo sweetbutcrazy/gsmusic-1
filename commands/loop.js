@@ -38,7 +38,7 @@ module.exports = {
             return message.channel.send(thing);
         }
 		
-		const emojiloop = "<:loop:784759554696151040>" ;
+		const emojiloop = "<:shuffle:784760022822944788>" ;
 
         if (args.length && /queue/i.test(args[0])) {
             player.setQueueRepeat(!player.queueRepeat);
