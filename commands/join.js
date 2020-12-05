@@ -31,7 +31,7 @@ module.exports = {
             player.connect();
 
             let mbd = new MessageEmbed()
-                .setColor("BLACK")
+                .setColor(client.color)
                 .setAuthor("Joined the voice channel", 
                            "https://cdn.discordapp.com/emojis/780844831072321548.gif", 
                            "https://discord.gg/gangsebelah" 
