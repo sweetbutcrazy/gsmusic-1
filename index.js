@@ -80,7 +80,7 @@ client.manager = new Manager({
     const channel = client.channels.cache.get(player.textChannel);
     channel.send({ embed: start });
   })
-  .on("queueEnd", player => {
+  .on("queueEnd", (player, track) => {
     const mbd = new MessageEmbed()
       .setColor("#D70FB6")
       .setAuthor("Add more songs before im leaving in 1 minutes.", 
