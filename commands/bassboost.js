@@ -3,7 +3,7 @@ const levels = {
   low: 0.10,
   medium: 0.15,
   high: 0.25,
-  extreme: 0.70
+  extreme: 0.60
 };
 
 module.exports = {
