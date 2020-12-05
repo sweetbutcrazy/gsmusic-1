@@ -39,7 +39,7 @@ client.manager = new Manager({
   ]
 })
   /*
-   * Lavalink Event
+   * Erela Event
    */
   .on("nodeConnect", node =>
     console.log(`Node "${node.options.identifier}" connected.`)
@@ -83,15 +83,7 @@ client.manager = new Manager({
   .on("queueEnd", player => {
     const mbd = new MessageEmbed()
       .setColor("RED")
-      .setAuthor(
-        "Good Bye... im leaving the channel.",
-        "https://cdn.discordapp.com/emojis/780091765696888852.gif",
-        "https://discord.gg/gangsebelah"
-      )
-      .setDescription(`Thanks for using **${client.user.username}**`)
-      .setImage(
-        `https://cdn.discordapp.com/attachments/773766203914321980/782599730215518228/banner_server_15.png?width=960&height=422`
-      )
+      .setDescription("Music queue has ended") 
       .setFooter(`${client.user.username} ~ Gang Sebelah © 2020`);
     const channel = client.channels.cache.get(player.textChannel);
     channel.send({ embed: mbd });
