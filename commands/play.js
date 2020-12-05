@@ -37,12 +37,6 @@ module.exports = {
     if (player.state !== "CONNECTED") 
     
     player.connect() 
-    let mbd = new MessageEmbed()
-         .setColor("BLACK")
-         .setAuthor(`Joinned the voice channel`, "https://cdn.discordapp.com/emojis/780844831072321548.gif", "https://discord.gg/gangsebelah")
-         .setDescription(`Joined <#${channel.id}> and bound to <#${message.channel.id}>`) 
-         .setFooter(`${client.user.username} ~ Gang Sebelah © 2020`);
-         message.channel.send({embed: mbd}); 
 
     player.set("autoplay", false);
     const search = args.join(" ");
