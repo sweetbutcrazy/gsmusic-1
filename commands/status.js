@@ -29,11 +29,11 @@ module.exports = {
            .addField("**⦊ SYSTEM :**", `
 **• Platfrom** : \`${os.type}\`
 **• Uptime** : \`${duration1}\`
+
 **• CPU** :
 > **• Cores** : \`${cpu.cores}\`
 > **• Model** : \`${os.cpus()[0].model}\`
 > **• Speed** : \`${os.cpus()[0].speed} MHz\`
-
 **• MEMORY** :
 > **• Total Memory** : \`${(os.totalmem() / 1024 / 1024).toFixed(2)} Mbps\`
 > **• Free Memory** : \`${(os.freemem() / 1024 / 1024).toFixed(2)} Mbps\`
