@@ -41,7 +41,7 @@ module.exports = {
          .setColor("BLACK")
          .setAuthor(`**Join the voice channel**\nJoined <#${channel.id}> and bound to <#${message.channel.id}>`, "https://cdn.discordapp.com/emojis/780844831072321548.gif", "https://discord.gg/gangsebelah")
          .setFooter(`${client.user.username} ~ Gang Sebelah © 2020`);
-         return message.channel.send({embed: mbd}); 
+         message.channel.send({embed: mbd}); 
     player.set("autoplay", false);
     const search = args.join(" ");
     let res;
