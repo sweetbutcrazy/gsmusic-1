@@ -89,7 +89,7 @@ client.manager = new Manager({
                  ) 
       .setFooter(`${client.user.username} ~ Gang Sebelah © 2020`);
     const channel = client.channels.cache.get(player.textChannel);
-    channel.reply({ embed: mbd });
+    channel.send(`<@${track.requester.id>`, { embed: mbd });
 
     setTimeout(() => {
     player.destroy();
