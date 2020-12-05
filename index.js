@@ -83,13 +83,27 @@ client.manager = new Manager({
   .on("queueEnd", player => {
     const mbd = new MessageEmbed()
       .setColor("RED")
-      .setDescription("I give u 1 minute for add more queue.") 
+      .setDescription("i give u 1 minute for add more queue.") 
       .setFooter(`${client.user.username} ~ Gang Sebelah © 2020`);
     const channel = client.channels.cache.get(player.textChannel);
     channel.send({ embed: mbd });
 
     setTimeout(() => {
     player.destroy();
+    const mbd = new MessageEmbed()
+      .setColor("RED")
+      .setAuthor(
+        "Good Bye... im leaving the channel.",
+        "https://cdn.discordapp.com/emojis/780091765696888852.gif",
+        "https://discord.gg/gangsebelah"
+      )
+      .setDescription(`Thanks for using **${client.user.username}**`)
+      .setImage(
+        `https://cdn.discordapp.com/attachments/773766203914321980/782599730215518228/banner_server_15.png?width=960&height=422`
+      )
+      .setFooter(`${client.user.username} ~ Gang Sebelah © 2020`);
+    const channel = client.channels.cache.get(player.textChannel);
+    channel.send({ embed: mbd });
     }, 60000) 
   })
   .on("trackEnd", async player => {
