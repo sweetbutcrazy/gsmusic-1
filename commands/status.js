@@ -23,8 +23,8 @@ module.exports = {
 **• Servers** : ${message.client.guilds.cache.size.toLocaleString()}
 **• Channels** : ${message.client.channels.cache.size.toLocaleString()}
 **• Users** : ${message.client.users.cache.size.toLocaleString()}
-**• Discord.js** : v${version}
-**• Node** : ${process.version}
+**• [Discord.js](https://discord.js.org/#/)** : v${version}
+**• [Node](https://node.js.org/)** : ${process.version}
 `)
            .addField("**⦊ SYSTEM :**", `
 **• Platfrom** : \`${os.type}\`
