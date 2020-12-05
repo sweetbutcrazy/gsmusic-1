@@ -11,7 +11,7 @@ const client = new Client({
 });
 client.config = require("./config.json");
 client.logger = require("./util/logger.js");
-
+client.color = client.config.color;
 const { clientID, clientSecret } = require("./config.json");
 
 var prefix = client.config.prefix;
@@ -74,7 +74,7 @@ client.manager = new Manager({
         `[${track.title}](${track.uri}) \n\`[${dura}]\``
       )
       .setThumbnail(track.displayThumbnail("hqdefault"))
-      .setColor("#D70FB6")
+      .setColor(client.color)
       .setTimestamp()
       .setFooter(
         `Request by: ${track.requester.tag}`,
@@ -89,7 +89,7 @@ client.manager = new Manager({
   })
   .on("queueEnd", (player, track) => {
     const mbd = new MessageEmbed()
-      .setColor("#D70FB6")
+      .setColor(client.color)
       .setAuthor("Add more songs before im leaving in 1 minutes.", 
                  "https://cdn.discordapp.com/emojis/745870325887008769.png", 
                  "https://discord.gg/gangsebelah" 
@@ -101,7 +101,7 @@ client.manager = new Manager({
     var ms = setTimeout(() => {
     player.destroy();
     const mbd = new MessageEmbed()
-      .setColor("#D70FB6")
+      .setColor(client.color)
       .setAuthor(
         "Good Bye... im leaving the channel.",
         "https://cdn.discordapp.com/emojis/780091765696888852.gif",
