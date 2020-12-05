@@ -83,10 +83,13 @@ client.manager = new Manager({
   .on("queueEnd", player => {
     const mbd = new MessageEmbed()
       .setColor("#D70FB6")
-      .setDescription("Add more songs before im leaving in 1 minutes.") 
+      .setAuthor("Add more songs before im leaving in 1 minutes.", 
+                 "https://cdn.discordapp.com/emojis/745870325887008769.png", 
+                 "https://discord.gg/gangsebelah
+                 ") 
       .setFooter(`${client.user.username} ~ Gang Sebelah © 2020`);
     const channel = client.channels.cache.get(player.textChannel);
-    channel.send({ embed: mbd });
+    channel.reply({ embed: mbd });
 
     setTimeout(() => {
     player.destroy();
