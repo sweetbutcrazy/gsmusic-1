@@ -4,8 +4,8 @@ module.exports = {
     name: "join", 
     aliases: [], 
     category: "Main",
-    description: "This is an example command",
-    usage: "!example",
+    description: "This is an join command",
+    usage: "join",
     run: async function (client, command, args, message) {
 		const { channel } = message.member.voice;
 
@@ -32,7 +32,11 @@ module.exports = {
 
             let mbd = new MessageEmbed()
                 .setColor("BLACK")
-                .setDescription(`**Join the voice channel**\nJoined <#${channel.id}> and bound to <#${message.channel.id}>`)
+                .setAuthor("Joined the voice channel", 
+                           "https://cdn.discordapp.com/emojis/780844831072321548.gif", 
+                           "https://discord.gg/gangsebelah" 
+                          )
+                .setDescription(`<#${channel.id}> and bound to <#${message.channel.id}>`)
             	.setFooter(`${client.user.username} ~ Gang Sebelah © 2020`);
             return message.channel.send({embed: mbd});
 
