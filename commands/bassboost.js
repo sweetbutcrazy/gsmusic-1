@@ -13,7 +13,7 @@ module.exports = {
     description: "This is an bassboost command",
     usage: "bassboost [off|low|high|medium]",
     run: async function (client, command, args, message) { 
-     if(!args[0]) return message.channel.send({embed: {color: client.color, description: "**usage: n.bassboost off \nn.bassboost low \nn.bassboost medium \nn.bassboost high \nn.bassboost extreme**"}}) 
+     if(!args[0]) return message.channel.send({embed: {color: client.color, description: "**usage:\n n.bassboost off \nn.bassboost low \nn.bassboost medium \nn.bassboost high \nn.bassboost extreme**"}}) 
         const player = message.client.manager.get(message.guild.id);
     if (!player) return message.channel.send({embed: {color: client.color, description: "There is no player for this guild"}});
 
