@@ -41,7 +41,7 @@ module.exports = {
 
         player.queue.shuffle();
         
-        const emojishuffle = message.client.emoji.shuffle;
+        const emojishuffle = "<:loop:784759554696151040>" ;
 
         let thing = new MessageEmbed()
             .setDescription(`${emojishuffle} Shuffled the queue`)
