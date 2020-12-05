@@ -14,7 +14,7 @@ module.exports = {
         const duration1 = moment.duration(message.client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
         const cpu = await si.cpu();
         const embed = new MessageEmbed()
-            .setColor("BLACK")
+            .setColor(client.color)
             .setThumbnail(message.client.user.displayAvatarURL())
             .setFooter(`${message.client.user.username} ~ Gang Sebelah © 2020`)
             .setAuthor("STATISTIC", "https://cdn.discordapp.com/emojis/588679397909987350.png", "https://discord.gg/gangsebelah") 
