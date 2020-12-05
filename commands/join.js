@@ -11,7 +11,7 @@ module.exports = {
 
 		if (!channel) {
             let mbd = new MessageEmbed()
-                .setColor("RED")
+                .setColor(client.color)
                 .setDescription("You need to join voice channel!");
             return message.channel.send({embed: mbd});
         }
@@ -43,7 +43,7 @@ module.exports = {
         } else if (message.guild.me.voice.channel !== channel) {
 
             let mbd = new MessageEmbed()
-                .setColor("RED")
+                .setColor(client.color)
                 .setDescription(`You must be in the same channel as ${client.user}`);
             return message.channel.send({embed: mbd});
         }
