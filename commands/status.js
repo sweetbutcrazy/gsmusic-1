@@ -26,7 +26,7 @@ module.exports = {
 **• Discord.js** : v${version}
 **• Node** : ${process.version}
 `)
-           .addField(**⦊ SYSTEM :**, `
+           .addField("**⦊ SYSTEM :**", `
 **• Platfrom** : \`${os.type}\`
 **• Uptime** : \`${duration1}\`
 **• CPU** :
