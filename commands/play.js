@@ -36,7 +36,12 @@ module.exports = {
 
     if (player.state !== "CONNECTED") 
     
-    player.connect() return 
+    player.connect() 
+    let mbd = new MessageEmbed()
+         .setColor("BLACK")
+         .setAuthor(`**Join the voice channel**\nJoined <#${channel.id}> and bound to <#${message.channel.id}>`, "https://cdn.discordapp.com/emojis/780844831072321548.gif", "https://discord.gg/gangsebelah")
+         .setFooter(`${client.user.username} ~ Gang Sebelah © 2020`);
+         return message.channel.send({embed: mbd}); 
     player.set("autoplay", false);
     const search = args.join(" ");
     let res;
@@ -67,7 +72,12 @@ module.exports = {
           return message.channel.send({
             embed: {
               color: "#D70FB6",
-              description: `**Songs added to queue **\n[${track.title}](${track.uri})  \n\`[${client.dura}]\``,
+              author: {
+		name: 'Songs added to queue',
+		icon_url: 'https://cdn.discordapp.com/emojis/780844359800586250.png' ,
+		url: 'https://discord.gg/gangsebelah',
+	      },
+              description: `[${track.title}](${track.uri})  \n\`[${client.dura}]\``,
               thumbnail: {
                 url: `${track.displayThumbnail("hqdefault")}`
               },
@@ -91,7 +101,12 @@ module.exports = {
         return message.channel.send({
           embed: {
             color: "#D70FB6",
-            description: `**Playlist added to queue **\n${res.tracks.length} Songs **${res.playlist.name}** \n\`[${client.dura}]\``,
+            author: {
+		name: 'Playlist added to queue',
+		icon_url: 'https://cdn.discordapp.com/emojis/780844359800586250.png',
+		url: 'https://discord.gg/gangsebelah',
+	    },
+            description: `${res.tracks.length} Songs **${res.playlist.name}** \n\`[${client.dura}]\``,
             thumbnail: {
               url: `${res.tracks[0].displayThumbnail("hqdefault")}`
             },
@@ -111,7 +126,12 @@ module.exports = {
           return message.channel.send({
             embed: {
               color: "#D70FB6",
-              description: `**Songs added to queue **\n[${track.title}](${track.uri}) \n\`[${client.dura}]\``,
+              author: {
+		name: 'Songs added to queue.',
+		icon_url: 'https://cdn.discordapp.com/emojis/780844359800586250.png',
+		url: 'https://discord.gg/gangsebelah',
+	      },
+              description: `[${track.title}](${track.uri}) \n\`[${client.dura}]\``,
               thumbnail: {
                 url: `${track.displayThumbnail("hqdefault")}`
               },
