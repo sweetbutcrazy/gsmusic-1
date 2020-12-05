@@ -9,13 +9,13 @@ module.exports = {
   
       const { channel } = message.member.voice;
       if (!channel) return message.reply("you need to join a voice channel.");
-      if (channel.id !== player.voiceChannel) return message.reply("you're not in the same voice channel.");
+      if (channel.id !== player.voiceChannel) return message.channel.send(`You must be in the same channel as ${client.user.username}`);
 
-      if (!player.queue.current) return message.reply("there is no music playing.")
+      if (!player.queue.current) return message.channel.send({embed: {color: client.color, description: "There is no music playing."}})
 
       const { title } = player.queue.current;
 
       player.stop();
-      return message.reply(`${title} was skipped.`)
+      return message.channel.send({embed: {color: client.color, description: `<:skip:784656390630146109> ${title} was skipped.`}})
     }
   } 
