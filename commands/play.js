@@ -22,7 +22,7 @@ module.exports = {
         embed: {
           color: "#D70FB6",
           description:
-            "**usage: \n``n.play ncs \nn.play https://www.youtube.com/watch?v=Nxs_mpWt2BA``**"
+            "**usage: \n``n.play ncs \nn.play https://www.youtube.com/watch?v=Nxs_mpWt2BA``\n\naliases: \n``play, p``**"
         }
       });
 
