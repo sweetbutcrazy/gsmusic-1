@@ -35,8 +35,7 @@ module.exports = {
 
 `)
             .addField("**<a:arroww:591269131941183515> LINK :**", `
-[Invite](https://discord.com/api/oauth2/authorize?client_id=${client.user.username}&permissions=8&scope=bot)
-[Guild](https://discord.gg/gangsebelah)
+[Invite](https://discord.com/api/oauth2/authorize?client_id=${client.user.username}&permissions=8&scope=bot) | [Guild](https://discord.gg/gangsebelah)
 `) 
         message.channel.send({embed: embed});
     }
