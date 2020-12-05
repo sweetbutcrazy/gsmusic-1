@@ -51,7 +51,7 @@ module.exports = {
             res = await player.search(search, message.author);
             player.queue.add(res.tracks[1]);
             let thing = new MessageEmbed()
-                .setColor("BLACK")
+                .setColor(client.color)
                 .setTimestamp()
                 .setDescription(`${emojireplay} Autoplay is now **enabled**`)
                 .setFooter(`Request by: ${message.author.tag}`, message.author.displayAvatarURL());
@@ -60,7 +60,7 @@ module.exports = {
             player.set("autoplay", false);
             player.queue.clear();
             let thing = new MessageEmbed()
-                .setColor("BLACK")
+                .setColor(client.color)
                 .setTimestamp()
                 .setDescription(`${emojireplay} Autoplay is now **disabled**`)
                 .setFooter(`Request by: ${message.author.tag}`, message.author.displayAvatarURL());
