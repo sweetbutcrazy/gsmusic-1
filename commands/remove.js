@@ -1,11 +1,11 @@
 const { MessageEmbed } = require("discord.js");
 
 module.exports = {
-    name: "example", //neded
-    aliases: ["e", "exa"],
+    name: "remove", //neded
+    aliases: [],
     category: "Main",
-    description: "This is an example command",
-    usage: "!example",
+    description: "This is an remove command",
+    usage: "remove",
     run: async function (client, command, args, message) { //needed
         const { channel } = message.member.voice;
 		const player = message.client.manager.get(message.guild.id);
