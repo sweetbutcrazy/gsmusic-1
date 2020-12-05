@@ -23,7 +23,7 @@ module.exports = {
 **• Servers** : ${message.client.guilds.cache.size.toLocaleString()}
 **• Channels** : ${message.client.channels.cache.size.toLocaleString()}
 **• Users** : ${message.client.users.cache.size.toLocaleString()}
-**• [Discord.js](https://discord.js.org/#/)** : v${version}
+**• [Discord.js](https://discord.js.org/#/) : v${version}
 **• [Node](https://node.js.org/) : ${process.version}
 `)
            .addField("**<a:arroww:591269131941183515> SYSTEM :**", `
