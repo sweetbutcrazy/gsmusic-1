@@ -18,7 +18,7 @@ module.exports = {
             .setThumbnail(message.client.user.displayAvatarURL())
             .setFooter(`${message.client.user.username} ~ Gang Sebelah © 2020`)
             .setAuthor("STATISTIC", "https://cdn.discordapp.com/emojis/588679397909987350.png", "https://discord.gg/gangsebelah") 
-            .addField("**⦊ GENERAL :**", `
+            .addField("**<a:arroww:591269131941183515> GENERAL :**", `
 **• Username: ${client.user.tag}
 **• Servers** : ${message.client.guilds.cache.size.toLocaleString()}
 **• Channels** : ${message.client.channels.cache.size.toLocaleString()}
@@ -26,7 +26,7 @@ module.exports = {
 **• [Discord.js](https://discord.js.org/#/)** : v${version}
 **• [Node](https://node.js.org/) : ${process.version}
 `)
-           .addField("**⦊ SYSTEM :**", `
+           .addField("**<a:arroww:591269131941183515> SYSTEM :**", `
 **• Platfrom** : \`${os.type}\`
 **• Uptime** : \`${duration1}\`
 
@@ -41,7 +41,7 @@ module.exports = {
 > **• Heap Usage** : \`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} Mbps\`
 
 `)
-            .addField("**SUPPORT :**", `
+            .addField("**<a:arroww:591269131941183515> LINK :**", `
 [Invite](https://discord.com/api/oauth2/authorize?client_id=${client.user.username}&permissions=8&scope=bot)
 [Guild](https://discord.gg/gangsebelah)
 `) 
