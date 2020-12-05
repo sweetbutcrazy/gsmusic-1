@@ -3,7 +3,7 @@ module.exports = {
     aliases: [], 
     description: "This is an skip command", 
     usage: "skip", 
-    run: async function(client, args, message ) { 
+    run: async function(client, command, args, message ) { 
       const player = message.client.manager.get(message.guild.id);
       if (!player) return message.reply("there is no player for this guild.");
   
