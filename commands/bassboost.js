@@ -34,7 +34,6 @@ module.exports = {
     player.setEQ(...bands);
 
     return message.channel.send({embed: {color: client.color, description: `Set the bassboost level to ${level}`}});
-  }
-}
+  
     }
 }
