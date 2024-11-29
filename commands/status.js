@@ -1,0 +1,42 @@
+const { MessageEmbed, version } = require("discord.js");
+const moment = require("moment");
+require("moment-duration-format");
+const os = require('os')
+const si = require('systeminformation');
+
+module.exports = {
+    name: "status", 
+    aliases: ["stats"],
+    category: "Main",
+    description: "This is an stats command",
+    usage: "stats",
+    run: async function (client, command, args, message) {
+        const duration1 = moment.duration(message.client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
+        const cpu = await si.cpu();
+        const embed = new MessageEmbed()
+            .setColor(client.color)
+            .setThumbnail(message.client.user.displayAvatarURL())
+            .setFooter(`${message.client.user.username} ~ Gang Sebelah © 2020`)
+            .setAuthor("STATISTIC", "https://cdn.discordapp.com/emojis/588679397909987350.png", "https://discord.gg/gangsebelah") 
+            .addField("**<a:arroww:591269131941183515> GENERAL :**", `**• Username: ${client.user.tag} \n• Servers : ${message.client.guilds.cache.size.toLocaleString()} \n• Channels : ${message.client.channels.cache.size.toLocaleString()} \n• Users : ${message.client.users.cache.size.toLocaleString()} \n• [Discord.js](https://discord.js.org/#/) : v${version} \n• [Node](https://node.js.org/) : ${process.version}**`)
+           .addField("**<a:arroww:591269131941183515> SYSTEM :**", `
+**• Platfrom** : \`${os.type}\`
+**• Uptime** : \`${duration1}\`
+
+**• CPU** :
+> **• Cores** : \`${cpu.cores}\`
+> **• Model** : \`${os.cpus()[0].model}\`
+> **• Speed** : \`${os.cpus()[0].speed} MHz\`
+**• MEMORY** :
+> **• Total Memory** : \`${(os.totalmem() / 1024 / 1024).toFixed(2)} Mbps\`
+> **• Free Memory** : \`${(os.freemem() / 1024 / 1024).toFixed(2)} Mbps\`
+> **• Heap Total** : \`${(process.memoryUsage().heapTotal / 1024 / 1024).toFixed(2)} Mbps\`
+> **• Heap Usage** : \`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} Mbps\`
+
+`)
+            .addField("**<a:arroww:591269131941183515> LINK :**", `
+[Invite](https://discord.com/api/oauth2/authorize?client_id=${client.user.username}&permissions=8&scope=bot) | [Guild](https://discord.gg/gangsebelah)
+`) 
+        message.channel.send({embed: embed});
+    }
+} 
